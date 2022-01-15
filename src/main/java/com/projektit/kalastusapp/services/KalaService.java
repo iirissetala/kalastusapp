@@ -1,0 +1,64 @@
+package com.projektit.kalastusapp.services;
+
+import com.projektit.kalastusapp.models.Kala;
+import com.projektit.kalastusapp.repositories.KalaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
+@Service
+public class KalaService implements IKalaService {
+    private KalaRepository repository;
+
+    @Autowired
+    public KalaService(KalaRepository repository) {
+        this.repository = repository;
+    }
+
+    @Override
+    public List<Kala> getKalat() {
+        return repository.findAll();
+    }
+
+    @Override
+    public Kala getKala(Long id) {
+        return repository.findById(id).orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
+    public List<Kala> setKalat(List<Kala> kalat) {
+        List<Kala> returnList = new ArrayList<Kala>();
+        if (kalat != null && !kalat.isEmpty()) {
+            for (Kala k : kalat) {
+                try {
+                    returnList.add(setKala(k));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+        return returnList;
+    }
+
+    private Kala setKala(Kala kala) {
+        Kala kalaToSave = null;
+
+        if (kala.getId() == null) {
+            kalaToSave = new Kala(kala.getLaji(), kala.getPituus(), kala.getPaino());
+        } else {
+            kalaToSave = repository.findById(kala.getId()).orElseThrow(NoSuchElementException::new);
+            kalaToSave.setLaji(kala.getLaji());
+            kalaToSave.setPaino(kala.getPaino());
+            kalaToSave.setPituus(kala.getPituus());
+        }
+
+        Kala returnKala = repository.save(kalaToSave);
+        repository.flush();
+
+        return returnKala;
+    }
+}
