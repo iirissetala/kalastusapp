@@ -23,6 +23,11 @@ public class KalaController {
         return service.getKalat();
     }
 
+    @GetMapping("/{id}")
+    public Kala getKala(@PathVariable Long id) {
+        return service.getKala(id);
+    }
+
     @PutMapping
     public List<Kala> setKalat(@RequestBody List<Kala> kalat) {
         List<Kala> result = new ArrayList<Kala>();
