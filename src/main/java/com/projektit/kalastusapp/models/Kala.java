@@ -1,5 +1,6 @@
 package com.projektit.kalastusapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class Kala {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "SAALIS_ID", referencedColumnName = "ID")
+    @JsonIgnoreProperties("kalat")
     private Saalis saalis;
 
     public Kala(String laji, double pituus, int paino) {

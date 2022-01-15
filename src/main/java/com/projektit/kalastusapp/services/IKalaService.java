@@ -9,6 +9,7 @@ import java.util.Optional;
 @Service
 public interface IKalaService {
     List<Kala> getKalat();
+    List<Kala> getKalatBySaalis(Long saalisId);
     Kala getKala(Long id);
     List<Kala> setKalat(List<Kala> kalat);
 

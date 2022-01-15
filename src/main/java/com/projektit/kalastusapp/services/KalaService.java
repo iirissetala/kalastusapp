@@ -25,8 +25,14 @@ public class KalaService implements IKalaService {
     }
 
     @Override
+    public List<Kala> getKalatBySaalis(Long saalisId) {
+        return repository.findBySaalis(saalisId);
+    }
+
+    @Override
     public Kala getKala(Long id) {
-        return repository.findById(id).orElseThrow(NoSuchElementException::new);
+        Optional<Kala> kala = repository.findById(id);
+        return kala.orElse(new Kala());
     }
 
     @Override
