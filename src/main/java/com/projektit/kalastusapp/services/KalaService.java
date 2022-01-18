@@ -40,11 +40,10 @@ public class KalaService implements IKalaService {
         List<Kala> returnList = new ArrayList<Kala>();
         if (kalat != null && !kalat.isEmpty()) {
             for (Kala k : kalat) {
-                try {
-                    returnList.add(setKala(k));
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
+               Kala returnKala = setKala(k);
+               if (returnKala.getId() != null) {
+                   returnList.add(returnKala);
+               }
             }
         }
         return returnList;
@@ -54,13 +53,19 @@ public class KalaService implements IKalaService {
         Kala kalaToSave = null;
 
         if (kala.getId() == null) {
-            kalaToSave = new Kala(kala.getLaji(), kala.getPituus(), kala.getPaino());
+            kalaToSave = new Kala();
         } else {
             kalaToSave = repository.findById(kala.getId()).orElseThrow(NoSuchElementException::new);
-            kalaToSave.setLaji(kala.getLaji());
-            kalaToSave.setPaino(kala.getPaino());
-            kalaToSave.setPituus(kala.getPituus());
+            if (kala.isPoisto()) {
+                repository.delete(kalaToSave);
+                return new Kala();
+            }
         }
+        kalaToSave.setLaji(kala.getLaji());
+        kalaToSave.setPaino(kala.getPaino());
+        kalaToSave.setPituus(kala.getPituus());
+        kalaToSave.setViehe(kala.getViehe());
+        kalaToSave.setSaalis(kala.getSaalis());
 
         Kala returnKala = repository.save(kalaToSave);
         repository.flush();

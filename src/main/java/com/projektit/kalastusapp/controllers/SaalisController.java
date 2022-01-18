@@ -23,7 +23,7 @@ public class SaalisController {
     }
 
     @GetMapping("/{id}")
-    public Saalis getSaalis(Long id) {
+    public Saalis getSaalis(@PathVariable Long id) {
         return service.getSaalis(id);
     }
 

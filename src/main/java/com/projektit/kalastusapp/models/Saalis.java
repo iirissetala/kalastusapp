@@ -27,7 +27,9 @@ public class Saalis {
     private LocalDate pvm;
     private String paikka;
 
-    @OneToMany(mappedBy = "saalis", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "saalis", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("saalis")
     private List<Kala> kalat = new ArrayList<>();
+
+    private boolean poisto = false;
 }

@@ -20,11 +20,14 @@ public class Kala {
     private String laji;
     private double pituus;
     private int paino;
+    private String viehe;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "SAALIS_ID", referencedColumnName = "ID")
     @JsonIgnoreProperties("kalat")
     private Saalis saalis;
+
+    private boolean poisto = false;
 
     public Kala(String laji, double pituus, int paino) {
         if (laji == null) {
