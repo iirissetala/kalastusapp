@@ -25,6 +25,7 @@ public class Kala {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "SAALIS_ID", referencedColumnName = "ID")
     @JsonIgnoreProperties("kalat")
+    @ToString.Exclude
     private Saalis saalis;
 
     private boolean poisto = false;
@@ -37,4 +38,5 @@ public class Kala {
         this.pituus = pituus;
         this.paino = paino;
     }
+
 }

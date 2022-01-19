@@ -29,6 +29,7 @@ public class Saalis {
 
     @OneToMany(mappedBy = "saalis", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("saalis")
+    @ToString.Exclude
     private List<Kala> kalat = new ArrayList<>();
 
     private boolean poisto = false;
