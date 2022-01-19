@@ -1,6 +1,6 @@
 # KalastusApp
 
-This app is made for fishermen to  use as a diary for their catches. You can save the location (just a String for now). A catch consist of fisher, date, location (just a String for now) and a list of fishes. You can save a new catch, edit an existing catch or delete one.
+This app is made for fishermen to use as a "catch diary". A catch consist of fisher, date, location (just a String for now) and a list of fishes. You can save a new catch, edit an existing catch or delete one.
 
 ## Technologies
 Project is created with 
