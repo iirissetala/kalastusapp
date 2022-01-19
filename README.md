@@ -8,4 +8,4 @@ Project is created with
 * Java 11
 * Maven 4.0.0
 
-Project uses h2 as database. For tests, an in-memory database is created.
+Project uses h2 as database and JPA with Hibernate for data mapping. For tests, an in-memory database is created.
