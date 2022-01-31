@@ -9,5 +9,10 @@ Project is created with
 
 Project uses h2 as database and JPA with Hibernate for data mapping. For tests, an in-memory database is created.
 
+## How to use it?
+Clone the project, start the app with your ide and try it with postman! 
+You can get an empty fish object with url /api/kalat/0 and catch object with url /api/saaliit/0.
+Note that you can only insert a list of fishes, so if you only wish to insert one, put it inside [] and it will work.
+
 ## Further development
-My intention is to implement also frontend at some point. Also it would be nice to add possibility to upload a photo of a catch.
+My intention is to implement frontend at some point. Also it would be nice to add possibility to upload a photo of a catch.
