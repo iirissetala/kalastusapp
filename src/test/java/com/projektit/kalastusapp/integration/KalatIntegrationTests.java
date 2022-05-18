@@ -38,10 +38,11 @@ public class KalatIntegrationTests {
         List<Kala> saved = service.setKalat(kalaList);
         boolean found = false;
         for (Kala k : saved) {
-            if (k.getLaji().equals(TEST_LAJI));
-            id = k.getId();
-            foundKala = k;
-            found = true;
+            if (k.getLaji().equals(TEST_LAJI)){
+                id = k.getId();
+                foundKala = k;
+                found = true;
+            }
         }
 
         assertFalse(saved.isEmpty());
