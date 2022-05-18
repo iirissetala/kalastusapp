@@ -58,9 +58,10 @@ public class KalatIntegrationTests {
         List<Kala> updated = service.setKalat(saved);
         found = false;
         for (Kala k : updated) {
-            if (k.getLaji().equals(TEST_LAJI_MUOKATTU));
-            k.setPoisto(true);
-            found = true;
+            if (k.getLaji().equals(TEST_LAJI_MUOKATTU)) {
+                k.setPoisto(true);
+                found = true;
+            }
         }
 
         assertTrue(found);
@@ -70,8 +71,9 @@ public class KalatIntegrationTests {
         List<Kala> afterDelete = service.getKalat();
         found = false;
         for (Kala k : afterDelete) {
-            if (k.getLaji().equals(TEST_LAJI_MUOKATTU));
-            found = true;
+            if (k.getLaji().equals(TEST_LAJI_MUOKATTU)) {
+                found = true;
+            }
         }
 
         assertFalse(found);
